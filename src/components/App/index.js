@@ -1,15 +1,21 @@
-// == Import npm
 import React from 'react';
 
-// == Import
-import reactLogo from './react-logo.svg';
+// Import Styles
 import './styles.css';
+import 'semantic-ui-css/semantic.min.css'
+
+// Import Components
+
+// Import container
+import SearchClient from '../../container/SearchClient';
+import ClientsContainer from '../../container/ClientsContainer';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
+    <h1>Démo Redux</h1>
+    <SearchClient />
+    <ClientsContainer />
   </div>
 );
 
