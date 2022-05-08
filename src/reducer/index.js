@@ -6,11 +6,13 @@ import { } from 'src/selectors';
 //On importe les actions du fichier action
 import {
   CHANGE_FORM_VALUE,
+  RESET_FORM
 } from 'src/actions/form';
 
 import {
-  FETCH_USERS_TO_STATE,
-  FETCH_ONE_USER_TO_STATE
+  FETCH_CLIENTS_TO_STATE,
+  FETCH_ONE_CLIENT_TO_STATE,
+  SAVE_NEW_CLIENT
 } from 'src/actions/client'
 
 //On définie les valeurs attribuer à l'initialisation du state
@@ -18,7 +20,11 @@ import {
 
 const initialState = {
   inputs: {
-    name: '',
+    nom: '',
+    email: '',
+    adresse: '',
+    ville: '',
+    codePostal: '',
   },
   clientsList: [],
   clientDetails: {},
@@ -36,23 +42,45 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         inputs: {
+          ...state.inputs,
           [action.name]: action.value,
         }
       };
 
-    case FETCH_USERS_TO_STATE:
+    case FETCH_CLIENTS_TO_STATE:
 
       return {
         ...state,
-        clientsList: action.users
+        clientsList: action.clients
       };
 
-    case FETCH_ONE_USER_TO_STATE:
+    case FETCH_ONE_CLIENT_TO_STATE:
       return {
         ...state,
-        clientDetails: action.user
+        clientDetails: action.client
       }
 
+    case SAVE_NEW_CLIENT:
+      return {
+        ...state,
+        clientsList: [
+          ...state.clientsList,
+          action.client
+        ]
+      }
+
+    case RESET_FORM:
+
+      return {
+        ...state,
+        inputs: {
+          nom: '',
+          email: '',
+          adresse: '',
+          ville: '',
+          codePostal: '',
+        }
+      }
     default:
       return state;
   }

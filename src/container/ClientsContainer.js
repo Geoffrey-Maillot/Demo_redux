@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ClientsContainer from 'src/components/ClientsContainer'
-import { fetchUsers, fetchOneUser } from 'src/actions/client';
+import { fetchClients, fetchOneClient } from 'src/actions/client';
 
 
 // Les states à passer en props au composant
@@ -12,8 +12,8 @@ const mapStateToProps = (state) => ({
 
 // Les fonctions à passer en props au composant qui dispatchent les actions
 const mapDispatchToProps = (dispatch) => ({
-  fetchUsers: () => dispatch(fetchUsers()),
-  fetchOneUser: (id) => dispatch(fetchOneUser(id))
+  fetchClients: () => dispatch(fetchClients()),
+  fetchOneClient: (id) => dispatch(fetchOneClient(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientsContainer);

@@ -1,26 +1,33 @@
 // Actions list
-export const FETCH_USERS = 'FETCH_USERS'
-export const FETCH_ONE_USER = 'FETCH_ONE_USER'
+export const FETCH_CLIENTS = 'FETCH_CLIENTS'
+export const FETCH_ONE_CLIENT = 'FETCH_ONE_CLIENT'
 
-export const FETCH_USERS_TO_STATE = 'FETCH_USERS_TO_STATE '
-export const FETCH_ONE_USER_TO_STATE = 'FETCH_ONE_USER_TO_STATE '
+export const FETCH_CLIENTS_TO_STATE = 'FETCH_CLIENTS_TO_STATE '
+export const FETCH_ONE_CLIENT_TO_STATE = 'FETCH_ONE_CLIENT_TO_STATE '
+
+export const SAVE_NEW_CLIENT = 'SAVE_NEW_CLIENT'
 
 // Actions creator
-export const fetchUsers = () => ({
-  type: FETCH_USERS,
+export const fetchClients = () => ({
+  type: FETCH_CLIENTS,
 });
 
-export const fetchOneUser = (id) => ({
-  type: FETCH_ONE_USER,
+export const fetchOneClient = (id) => ({
+  type: FETCH_ONE_CLIENT,
   id
 });
 
-export const fetchUsersToState = (users) => ({
-  type: FETCH_USERS_TO_STATE,
-  users
+export const fetchClientsToState = (clients) => ({
+  type: FETCH_CLIENTS_TO_STATE,
+  clients
 });
 
-export const fetchOneUserToState = (user) => ({
-  type: FETCH_ONE_USER_TO_STATE,
-  user
+export const fetchOneClientToState = (client) => ({
+  type: FETCH_ONE_CLIENT_TO_STATE,
+  client
 });
+
+export const saveNewClient = (client) => ({
+  type: SAVE_NEW_CLIENT,
+  client
+})

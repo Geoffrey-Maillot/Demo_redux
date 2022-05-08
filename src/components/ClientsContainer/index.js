@@ -6,11 +6,11 @@ import ClientDetail from './ClientDetails';
 import ClientsList from './ClientsList';
 
 
-const ClientsContainer = ({ fetchUsers, clients, fetchOneUser, client }) => (
+const ClientsContainer = ({ fetchClients, clients, fetchOneClient, client }) => (
   <div className='clients-container card'>
     <h1>Clients</h1>
     <div className='flex-container'>
-      <ClientsList fetchUsers={fetchUsers} clients={clients} fetchOneUser={fetchOneUser} />
+      <ClientsList fetchClients={fetchClients} clients={clients} fetchOneClient={fetchOneClient} />
       <ClientDetail client={client} />
     </div>
   </div>

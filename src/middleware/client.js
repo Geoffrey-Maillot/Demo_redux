@@ -1,14 +1,17 @@
 import api from 'src/api';
 
 import {
-  FETCH_USERS,
-  FETCH_ONE_USER
+  FETCH_CLIENTS,
+  FETCH_ONE_CLIENT,
+  saveNewClient
 } from 'src/actions/client';
 
 import {
-  fetchUsersToState,
-  fetchOneUserToState
+  fetchClientsToState,
+  fetchOneClientToState
 } from 'src/actions/client'
+
+import { ADD_NEW_CLIENT } from '../actions/form';
 
 /*
     Un middleware est une fonction qu'on va donner au store
@@ -20,21 +23,33 @@ import {
     - action : l'objet action, l'intention qu'on a intercepté et qu'on va potentiellement traduire
 */
 export default (store) => (next) => (action) => {
-  // console.log('Passage dans le middleware', action);
   switch (action.type) {
 
-    case FETCH_USERS:
+    case FETCH_CLIENTS:
       api.get('/users')
-        .then(({ data }) => store.dispatch(fetchUsersToState(data)))
+        .then(({ data }) => store.dispatch(fetchClientsToState(data)))
 
       return next(action)
 
-    case FETCH_ONE_USER:
-      console.log(action)
+    case FETCH_ONE_CLIENT:
       const { id } = action
       api.get(`/users/${id}`)
-        .then(({ data }) => store.dispatch(fetchOneUserToState(data)))
+        .then(({ data }) => store.dispatch(fetchOneClientToState(data)))
 
+      return next(action)
+
+    case ADD_NEW_CLIENT:
+      const { nom, email, adresse, ville, codePostal } = store.getState().inputs
+      api.post('/users', {
+        nom,
+        email,
+        adress: {
+          adresse,
+          ville,
+          codePostal
+        }
+      })
+        .then(({ data }) => store.dispatch(saveNewClient(data)))
       return next(action)
 
 

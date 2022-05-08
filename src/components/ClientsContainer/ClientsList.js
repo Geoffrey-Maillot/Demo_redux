@@ -6,15 +6,14 @@ import { Button } from 'semantic-ui-react'
 // Import Styles
 import './styles.scss'
 
-const ClientsList = ({ fetchUsers, fetchOneUser, clients = [] }) => {
-  console.log(fetchUsers)
+const ClientsList = ({ fetchClients, fetchOneClient, clients = [] }) => {
   return (
     <div className='clients-list card'>
       <h2>liste</h2>
       {clients.map((client) => (
-        <p onClick={() => fetchOneUser(client.id)} style={{ border: '1px solid black', padding: '10px 5px', cursor: 'pointer' }} key={client.name}>{client.name}</p>
+        <p onClick={() => fetchOneClient(client.id)} style={{ border: '1px solid black', padding: '10px 5px', cursor: 'pointer' }} key={client.id}>{client.nom}</p>
       ))}
-      <Button onClick={fetchUsers} primary>Charger tous les clients</Button>
+      <Button onClick={fetchClients} primary>Charger tous les clients</Button>
     </div>
   )
 };
